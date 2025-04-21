@@ -1,0 +1,68 @@
+<!-- templates/home.html -->
+{% extends "base.html" %}
+<!-- Titulo de la pagina -->
+{% block title %}Inicio - El Reino Fungi{% endblock %} {% block content %}
+<h1 class="mt-4">Bienvenido a Tienda de Hongos Medicinales y Comestibles</h1>
+<!-- Contenido de la pagina -->
+<h2 class="mt-4 mb-4">Nuestros Productos</h2>
+<div>
+  <!-- El botón de "Registrar Nuevo Producto" ahora solo aparece si es admin -->
+  {% if current_user.is_admin == 1 %}
+  <a href="{{ url_for('crear_producto') }}" class="btn btn-primary">
+    Registrar Nuevo Producto
+  </a>
+  {% endif %}
+  <a href="{{ url_for('carrito') }}" class="btn btn-warning">Ir al Carrito</a>
+</div>
+<br />
+<div class="row row-cols-1 row-cols-md-3 g-4">
+  {% for producto in productos %}
+  <!-- Siempre mostrar nombre y descripción del producto -->
+  <div class="col">
+    <div class="card h-100 shadow-sm">
+      <div class="card-body">
+        <h5 class="card-title">{{ producto[1] }}</h5>
+        <p class="card-text">{{ producto[2] }}</p>
+        <p class="card-text fw-bold text-success">${{ producto[3] }}</p>
+        <a
+          href="{{ url_for('producto_details', id=producto[0]) }}"
+          class="btn btn-primary"
+        >
+          Ver detalle
+        </a>
+        <!-- Mostrar los productos y los botones de "Editar" y "Eliminar" solo si es admin -->
+        {% if current_user.is_admin == 1 %}
+        <!-- Botón de editar solo si es admin -->
+        <a
+          href="{{ url_for('editar_producto', id=producto[0]) }}"
+          class="btn btn-warning"
+          >Editar</a
+        >
+
+        <!-- Botón de eliminar solo si es admin -->
+        <form
+          action="{{ url_for('eliminar_producto', id=producto[0]) }}"
+          method="POST"
+          style="display: inline"
+        >
+          <button type="submit" class="btn btn-danger">Eliminar</button>
+        </form>
+        {% endif %}
+      </div>
+    </div>
+  </div>
+
+  {% endfor %}
+</div>
+<br />
+<div>
+  <!-- El botón de "Registrar Nuevo Producto" ahora solo aparece si es admin -->
+  {% if current_user.is_admin == 1 %}
+  <a href="{{ url_for('crear_producto') }}" class="btn btn-primary">
+    Registrar Nuevo Producto
+  </a>
+  {% endif %}
+  <a href="{{ url_for('carrito') }}" class="btn btn-warning">Ir al Carrito</a>
+</div>
+
+{% endblock %}

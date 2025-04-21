@@ -1,0 +1,47 @@
+<!-- templates/producto_details.html -->
+{% extends "base.html" %}
+
+<!-- Titulo de la pagina -->
+{% block title %}{{ productos[1] }} - Tienda de Hongos{% endblock %}
+
+{% block content %}
+<div class="container mt-4">
+  <!-- Titulo de la seccion -->
+  <h1 class="mb-4">Detalle Producto: {{ productos[1] }}</h1>
+
+  <!-- Contenido de la pagina -->
+  <div class="card shadow-sm p-4 mb-4">
+    <div class="mb-3">
+      <strong>Nombre:</strong>
+      <p class="form-control-plaintext">{{ productos[1] }}</p>
+    </div>
+    <div class="mb-3">
+      <strong>Descripción:</strong>
+      <p class="form-control-plaintext">{{ productos[2] }}</p>
+    </div>
+    <div class="mb-3">
+      <strong>Precio:</strong>
+      <p class="form-control-plaintext">${{ productos[3] }}</p>
+    </div>
+
+    <form action="{{ url_for('agregar_carrito', id=productos[0]) }}" method="POST" class="mt-3">
+      <div class="row g-3 align-items-center mb-3">
+        <div class="col-auto">
+          <label for="cantidad" class="col-form-label">Cantidad:</label>
+        </div>
+        <div class="col-auto">
+          <input type="number" name="cantidad" id="cantidad" value="1" min="1" class="form-control" />
+        </div>
+        <div class="col-auto">
+          <button type="submit" class="btn btn-primary">Agregar al carrito</button>
+        </div>
+      </div>
+    </form>
+
+    <!-- Botón alineado a la izquierda -->
+    <div class="text-start">
+        <a href="{{ url_for('home') }}" class="btn btn-secondary">Volver al inicio</a>
+    </div>
+  </div>
+</div>
+{% endblock %}

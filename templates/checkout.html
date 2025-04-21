@@ -1,0 +1,46 @@
+<!-- templates/checkout.html -->
+{% extends "base.html" %}
+
+<!-- Titulo de la pagina -->
+{% block title %}Checkout - El Reino Fungi{% endblock %}
+
+{% block content %}
+<div class="container mt-4">
+  <!-- Titulo de la seccion -->
+  <h1 class="mb-4">Detalles de la Compra</h1>
+
+  <!-- Contenido de la pagina -->
+  <table class="table table-bordered table-striped">
+    <thead class="table-dark">
+      <tr>
+        <th>Producto</th>
+        <th>Cantidad</th>
+        <th>Precio</th>
+        <th>Total</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for item in items %}
+      <tr>
+        <td>{{ item[1] }}</td>
+        <td>{{ item[3] }}</td>
+        <td>${{ item[2] }}</td>
+        <td>${{ item[4] }}</td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+
+  <p class="fs-5"><strong>Total a pagar: </strong>${{ total_general }}</p>
+
+  <div class="d-flex justify-content-between mt-4">
+    
+  <!-- Botón para volver al inicio -->
+  <a href="{{ url_for('home') }}" class="btn btn-secondary">Volver al inicio</a>
+
+  <!-- Botón para finalizar compra -->
+  <a href="{{ url_for('finalizar_compra') }}" class="btn btn-success me-2">Finalizar Compra</a>
+
+</div>
+</div>
+{% endblock %}

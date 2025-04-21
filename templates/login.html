@@ -1,0 +1,31 @@
+<!-- templates/login.html -->
+{% extends "base.html" %}
+
+<!-- Titulo de la pagina -->
+{% block title %}Login - El Reino Fungi{% endblock %}
+
+{% block content %}
+<div class="container mt-4">
+  <!-- Titulo de la seccion -->
+  <h1 class="mb-4">Iniciar Sesión</h1>
+
+  <!-- Contenido de la pagina -->
+  <form method="POST" class="mb-3">
+    <div class="mb-3">
+      <label for="email" class="form-label">Correo Electrónico:</label>
+      <input type="email" name="email" id="email" class="form-control" required>
+    </div>
+
+    <div class="mb-3">
+      <label for="contrasena" class="form-label">Contraseña:</label>
+      <input type="password" name="contrasena" id="contrasena" class="form-control" required>
+    </div>
+
+    <button type="submit" class="btn btn-primary">Iniciar sesión</button>
+  </form>
+
+  <p>¿No tienes cuenta? <a href="{{ url_for('registro') }}">Regístrate</a></p>
+
+  <a href="{{ url_for('home') }}" class="btn btn-secondary mt-2">Volver al Inicio</a>
+</div>
+{% endblock %}

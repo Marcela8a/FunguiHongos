@@ -1,0 +1,53 @@
+<!-- templates/cart.html -->
+{% extends "base.html" %}
+
+<!-- Titulo de la pagina -->
+{% block title %}Carrito - El Reino Fungi{% endblock %}
+
+{% block content %}
+<div class="container mt-4">
+  <!-- Titulo de la seccion -->
+  <h1 class="mb-4">Tu carrito de compras</h1>
+
+  <!-- Contenido de la pagina -->
+  <div class="table-responsive">
+    <table class="table table-bordered table-striped align-middle text-center">
+      <thead class="table-dark">
+        <tr>
+          <th>Producto</th>
+          <th>Cantidad</th>
+          <th>Precio</th>
+          <th>Total</th>
+          <th>Acciones</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for item in items %}
+        <tr>
+          <td>{{ item[1] }}</td>
+          <td>{{ item[3] }}</td>
+          <td>${{ item[2] }}</td>
+          <td>${{ item[4] }}</td>
+          <td>
+            <form action="{{ url_for('quitar_del_carrito', id=item[0]) }}" method="post">
+              <button type="submit" class="btn btn-sm btn-danger">Eliminar</button>
+            </form>
+          </td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+
+  <p class="fs-5"><strong>Total: </strong>${{ total_general }}</p>
+
+  <!-- Botones de navegación -->
+  <div class="d-flex justify-content-between mt-4">
+    <!-- Botón para volver al inicio -->
+    <a href="{{ url_for('home') }}" class="btn btn-secondary">Volver al inicio</a>
+
+    <!-- Botón para finalizar compra -->
+    <a href="{{ url_for('checkout') }}" class="btn btn-success">Finalizar Compra</a>
+  </div>
+</div>
+{% endblock %}
