@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+{% block title %}Bienvenido - El Reino Fungi{% endblock %}
+
+{% block content %}
+
+<div class="bienvenida-hero">
+  <div class="bienvenida-overlay">
+    <img src="{{ url_for('static', filename='images/logo-hongo.png') }}" class="logo-grande" alt="Logo-Reino-Fungi">
+    <h3 class="bienvenida-subtitulo">¡Tu Fuente de Bienestar Natural!</h3>
+    <div class="frase-bienvenida">
+       <strong>¿Buscas mejorar tu salud y alimentación?<br>
+      Consulta nuestros productos naturales y<br>
+      mejora tus días.</strong>
+    </div>
+    <a href="{{ url_for('home') }}" class="btn btn-success mt-4">Ver Productos</a>
+  </div>
+</div>
+
+{% endblock %}

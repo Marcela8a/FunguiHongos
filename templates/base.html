@@ -17,8 +17,9 @@
     <!-- Header con barra de navegación -->
     <nav class="navbar navbar-expand-lg navbar-dark navbar-fungi">
       <div class="container-fluid">
-        <a class="navbar-brand text-dark navbar-text-logo" href="/">El Reino Fungi <img src="{{ url_for('static', filename='images/logo-hongo.png') }}" 
-            class="img-fluid rounded-start" alt="Logo-Reino-Fungi"></a>
+        <a class="navbar-brand text-dark navbar-text-logo" href="/">El Reino Fungi
+    <img src="{{ url_for('static', filename='images/logo-hongo.png') }}" class="img-fluid rounded-start" alt="Logo-Reino-Fungi">
+</a>
       </div>
       {% if not current_user.is_authenticated %}
       <div class="auth-buttons container d-flex justify-content-end">
@@ -57,4 +58,13 @@
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
   </body>
+
+  <footer>
+  <div class="footer-links">
+      <a href="{{ url_for('nosotros') }}">Nosotros</a> |
+      <a href="{{ url_for('contacto') }}">Contáctanos</a> |
+      <a href="{{ url_for('recetas') }}">Recetas</a>
+  </div>
+  &copy; {{ current_year }} El Reino Fungi. Todos los derechos reservados.
+</footer>
 </html>

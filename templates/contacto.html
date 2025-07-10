@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+{% block title %}Contáctanos - El Reino Fungi{% endblock %}
+
+{% block content %}
+<div class="mt-5 mb-5 text-center seccion-blanca">
+    <h1>Contáctanos</h1>
+    <p class="mt-3">
+        ¿Tienes alguna pregunta? ¿Quieres cotizar para tu negocio o necesitas asesoramiento sobre nuestros productos?<br>
+        Escríbenos a <a href="mailto:informacion@reinofungi.com">informacion@reinofungi.com</a> o completa el siguiente formulario:
+    </p>
+    <form class="mt-4" style="max-width:500px;margin:auto;text-align:left;">
+        <div class="mb-3">
+            <label for="nombre" class="form-label">Nombre</label>
+            <input type="text" class="form-control" id="nombre" placeholder="Tu nombre">
+        </div>
+        <div class="mb-3">
+            <label for="email" class="form-label">Correo electrónico</label>
+            <input type="email" class="form-control" id="email" placeholder="tucorreo@email.com">
+        </div>
+        <div class="mb-3">
+            <label for="mensaje" class="form-label">Mensaje</label>
+            <textarea class="form-control" id="mensaje" rows="4" placeholder="¿En qué te podemos ayudar?"></textarea>
+        </div>
+        <button type="submit" class="btn btn-success">Enviar</button>
+    </form>
+</div>
+{% endblock %}

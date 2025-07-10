@@ -2,6 +2,7 @@ from flask import Blueprint, render_template, request, redirect, url_for, flash
 from flask_login import login_user, login_required, logout_user, current_user
 from werkzeug.security import generate_password_hash, check_password_hash
 from flask_bcrypt import Bcrypt
+from datetime import datetime
 
 # Importa las funciones del modelo (por ejemplo, para interactuar con la base de datos)
 from models import obtener_productos, obtener_producto_por_id, registrar_usuario, obtener_usuario_por_email, agregar_producto, actualizar_producto, eliminar_producto_por_id, obtener_carrito, agregar_al_carrito, eliminar_del_carrito, vaciar_carrito,  vaciar_carrito_despues_de_compra
@@ -11,9 +12,26 @@ bp = Blueprint('', __name__)
 bcrypt = Bcrypt()
 
 @bp.route('/')
+def bienvenida():
+    return render_template('bienvenida.html')
+
+
+@bp.route('/home')
 def home():
     productos = obtener_productos()
     return render_template('home.html', productos=productos)
+
+@bp.route('/nosotros')
+def nosotros():
+    return render_template('nosotros.html')
+
+@bp.route('/contacto')
+def contacto():
+    return render_template('contacto.html')
+
+@bp.route('/recetas')
+def recetas():
+    return render_template('recetas.html')
 
 @bp.route('/productos/<int:id>')
 def producto_details(id):

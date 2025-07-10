@@ -9,7 +9,7 @@ body {
 
 h1, h2, h3, h4, h5, h6 {
     font-weight: 600;
-    color: #333; /* Colores oscuros para encabezados */
+    color: #0d0c0c; /* Colores oscuros para encabezados */
     margin: 0;
     padding: 0;
 }
@@ -22,22 +22,29 @@ h1 {
 
 p {
     line-height: 1.6;
-    color: #666;
+    color: #080808;
 }
 
 /* Navbar Styles */
 .navbar-fungi {
-    background-color: #F48253; /* Color principal de la barra de navegación */
+    background-color: #d45b5b; /* Color principal de la barra de navegación */
     padding: 10px 20px;
     box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
 }
 
 .navbar-text-logo {
-    font-size: calc(1.5rem + 1.5vw);
-    font-weight: 700; /* Más peso para destacar el logo */
+    font-family: 'Quicksand', 'Roboto', Arial, sans-serif;
+    font-size: 4.4rem;     /* Puedes aumentar este tamaño según lo requieras (ejemplo: 2rem, 2.5rem, etc) */
+    font-weight: 700;       /* Bastante grueso para que destaque */
     color: white;
-    line-height: 1.2;
+    line-height: 1.1;
     margin: 0;
+    display: flex;
+    align-items: center;
+}
+.navbar-text-logo img {
+    width: 60px;        /* Ajusta el tamaño del logo a tu gusto */
+    margin-left: 18px;  /* Más espacio entre el texto y el ícono */
 }
 
 .navbar-text-logo:hover {
@@ -167,4 +174,182 @@ footer a:hover {
         font-size: 0.9rem;
         padding: 8px 12px;
     }
+}
+
+/* Bienvenida Hero */
+.bienvenida-hero {
+    background: url('../images/fondo-hongos.jpg') no-repeat center center/cover;
+    height: 90vh;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.bienvenida-overlay {
+    background: rgba(243, 207, 207, 0.55);
+    color: #0c0c0c;
+    text-shadow: 0 2px 8px rgba(0,0,0,0.35), 0 1px 1px #fff8;
+    font-weight: 700;
+    text-align: center;
+    padding: 30px 50px;
+    border-radius: 20px;
+    box-shadow: 0 6px 36px rgba(51, 38, 38, 0.25);
+}
+
+.logo-grande {
+    width: 140px;
+    margin-bottom: 20px;
+}
+
+.frase-principal {
+    font-size: 2.3rem;
+    margin: 30px 0 20px 0;
+    font-weight: 700;
+    text-shadow: 0 2px 8px rgba(0,0,0,0.35), 0 1px 1px #fff8;
+    color: #090809;
+}
+
+.bienvenida-subtitulo {
+    font-size: 1.1rem;
+    color: #0c0b0b;
+    text-shadow: 0 2px 8px rgba(0,0,0,0.35), 0 1px 1px #fff8;
+    font-weight: 900;
+    margin-bottom: 15px;
+    letter-spacing: 1px;
+    font-weight: 400;
+    opacity: 0.93;
+}
+
+@media (max-width: 500px) {
+    .bienvenida-hero {
+        height: 35vh;
+    }
+    .bienvenida-overlay {
+        padding: 15px 10px;
+    }
+    .logo-grande {
+        width: 90px;
+    }
+    .frase-principal {
+        font-size: 1rem;
+    }
+}
+@import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@400;600&display=swap');
+
+footer {
+    background-color: #d45b5b;
+    color: #f5ecec;
+    font-family: 'Quicksand', 'Roboto', Arial, sans-serif;
+    text-align: center;
+    padding: 18px 12px 10px 12px;
+    font-size: 1.08rem;
+    letter-spacing: 0.2px;
+    margin-top: 36px;
+    border-top: 4px solid #f3e1d5;
+}
+
+.footer-links {
+    margin-bottom: 6px;
+    font-size: 1.08rem;
+    font-family: 'Quicksand', 'Roboto', Arial, sans-serif;
+}
+
+.footer-links a {
+    color: #ffe6d5;
+    margin: 0 13px;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 1.07rem;
+    transition: color 0.20s;
+    letter-spacing: 0.3px;
+}
+
+.footer-links a:hover {
+    color: #28a745;
+    text-decoration: underline;
+}
+
+html, body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+.container {
+    flex: 1 0 auto; /* Hace que el contenido crezca y empuje el footer hacia abajo */
+}
+
+footer {
+    flex-shrink: 0;
+}
+
+/* Fuente bonita para toda la bienvenida */
+.frase-bienvenida {
+    font-family: 'Quicksand', 'Roboto', Arial, sans-serif;
+    font-size: 1.35rem;
+    font-weight: 400;   /* Peso normal, SIN negrilla */
+    color: #473021;
+    margin: 28px 0 10px 0;
+    line-height: 1.35;
+    text-align: center;
+    letter-spacing: 0.5px;
+}
+
+@media (max-width: 600px) {
+    .frase-bienvenida {
+        font-size: 1.08rem;
+    }
+}
+body {
+    background: url('../images/base4.jpg') no-repeat center center fixed;
+    background-size: cover;
+    font-family: 'Quicksand', 'Roboto', Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+@import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@400;700&display=swap');
+
+.seccion-blanca {
+    color: #edeef0;
+    font-family: 'Quicksand', 'Roboto', Arial, sans-serif;
+    text-shadow: 0 2px 8px rgba(0,0,0,0.35), 0 1px 1px #fff8;
+    
+}
+
+.seccion-blanca h1 {
+    font-size: 1.5rem;
+    font-weight: 100;
+    margin-bottom: 18px;
+    color: #81c5de;
+    letter-spacing: 1.5px;
+    
+}
+
+.seccion-blanca p {
+   color: #edeef0;
+    font-size: 1.15rem;
+    font-weight: 200;
+    text-shadow: 0 2px 8px rgba(0,0,0,0.35), 0 1px 1px #fff8;
+    
+}
+
+.seccion-blanca strong {
+    font-weight: 400;   
+}
+
+.seccion-blanca h2{
+    color: #edf4f4;
+    font-family: 'Quicksand', 'Roboto', Arial, sans-serif;
+    text-shadow: 0 2px 8px rgba(0,0,0,0.35), 0 1px 1px #fff8;
+    font-size: 1.2rem;
+    font-weight: 50;
+   
 }
