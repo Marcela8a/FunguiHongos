@@ -5,10 +5,11 @@ from flask_bcrypt import Bcrypt
 from datetime import datetime
 
 # Importa las funciones del modelo (por ejemplo, para interactuar con la base de datos)
-from models import obtener_productos, obtener_producto_por_id, registrar_usuario, obtener_usuario_por_email, agregar_producto, actualizar_producto, eliminar_producto_por_id, obtener_carrito, agregar_al_carrito, eliminar_del_carrito, vaciar_carrito,  vaciar_carrito_despues_de_compra
+from models.productos import obtener_productos, obtener_producto_por_id, agregar_producto, actualizar_producto, eliminar_producto_por_id
+from models.usuarios import registrar_usuario, obtener_usuario_por_email
+from models.carrito import obtener_carrito, agregar_al_carrito, eliminar_del_carrito, vaciar_carrito, vaciar_carrito_despues_de_compra
 
-# Crear un Blueprint para las rutas
-bp = Blueprint('', __name__)
+bp = Blueprint('main', __name__)
 bcrypt = Bcrypt()
 
 @bp.route('/')
@@ -25,9 +26,13 @@ def home():
 def nosotros():
     return render_template('nosotros.html')
 
-@bp.route('/contacto')
+@bp.route('/contacto', methods=['GET', 'POST'])
 def contacto():
-    return render_template('contacto.html')
+    mensaje = None
+    if request.method == 'POST':
+        # Aquí podrías procesar los datos si lo deseas
+        mensaje = '¡El formulario se envió correctamente! Nos pondremos en contacto contigo pronto.'
+    return render_template('contacto.html', mensaje=mensaje)
 
 @bp.route('/recetas')
 def recetas():

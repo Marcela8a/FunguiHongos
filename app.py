@@ -2,8 +2,13 @@ from flask import Flask
 from flask_mysqldb import MySQL
 from flask_bcrypt import Bcrypt
 from flask_login import LoginManager
-from models import mysql, Usuario, obtener_usuario_por_id  # Importar el modelo y MySQL
-from routes import bp as routes_blueprint  # Importar el Blueprint desde routes.py
+from models.productos import mysql
+from models.usuarios import Usuario, obtener_usuario_por_id
+from controllers.productos_controller import productos_bp
+from controllers.usuarios_controller import usuarios_bp
+from controllers.carrito_controller import carrito_bp
+from controllers.historial_controller import historial_bp
+from routes import bp as main_bp
 
 # Crear la instancia de Flask
 app = Flask(__name__)
@@ -22,15 +27,20 @@ bcrypt = Bcrypt(app)
 # Configuración de Flask-Login
 login_manager = LoginManager()
 login_manager.init_app(app)
-login_manager.login_view = 'login'  # Ruta a la que redirigir cuando no haya sesión activa
+login_manager.login_view = 'usuarios.login'  # Ruta a la que redirigir cuando no haya sesión activa
+login_manager.login_message = "Por favor, inicia sesión para acceder a esta página."
 
 # Función para cargar un usuario basado en su ID (para Flask-Login)
 @login_manager.user_loader
 def load_user(user_id):
     return obtener_usuario_por_id(user_id)
 
-# Registrar el Blueprint de rutas
-app.register_blueprint(routes_blueprint)
+
+app.register_blueprint(productos_bp)
+app.register_blueprint(usuarios_bp)
+app.register_blueprint(carrito_bp)
+app.register_blueprint(historial_bp)
+app.register_blueprint(main_bp)
 
 # Ejecutar la aplicación
 if __name__ == '__main__':

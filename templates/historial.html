@@ -1,0 +1,47 @@
+{% extends 'base.html' %}
+{% block content %}
+<h2>Historial de Compras</h2>
+<table class="table">
+    <thead>
+        <tr>
+            <th>Usuario</th>
+            <th>Email</th>
+            <th>Fecha</th>
+            <th>Total</th>
+            <th>Productos</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for compra in historial %}
+        <tr>
+            <td>{{ compra.usuario_nombre }}</td>
+            <td>{{ compra.usuario_email }}</td>
+            <td>{{ compra.fecha }}</td>
+            <td>${{ compra.total }}</td>
+            <td>
+                <table class="table table-bordered table-sm mb-0">
+                    <thead>
+                        <tr>
+                            <th>Nombre</th>
+                            <th>Precio</th>
+                            <th>Cantidad</th>
+                            <th>Total</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for producto in compra.productos %}
+                        <tr>
+                            <td>{{ producto.nombre }}</td>
+                            <td>${{ producto.precio }}</td>
+                            <td>{{ producto.cantidad }}</td>
+                            <td>${{ producto.total }}</td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endblock %}

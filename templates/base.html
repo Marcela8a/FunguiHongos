@@ -23,15 +23,23 @@
       </div>
       {% if not current_user.is_authenticated %}
       <div class="auth-buttons container d-flex justify-content-end">
-        <a href="{{ url_for('login') }}" class="btn btn-success">
+  <a href="{{ url_for('usuarios.login') }}" class="btn btn-success">
           Iniciar Sesión
         </a>
-        <a href="{{ url_for('registro') }}" class="btn btn-primary">
+  <a href="{{ url_for('usuarios.registro') }}" class="btn btn-primary">
           Registrarse
         </a>
         {% else %}
         <h6 class="text-dark">Bienvenido, <strong>{{ current_user.nombre }}!</strong></h6>
-        <a href="{{ url_for('logout') }}" class="btn btn-secondary">
+        <a href="{{ url_for('historial.ver_historial') }}" class="btn btn-info me-2">
+          Historial de compras
+        </a>
+  {% if current_user.is_admin %}
+        <a href="{{ url_for('historial.ver_historial_admin') }}" class="btn btn-warning me-2">
+          Historial de todas las compras
+        </a>
+        {% endif %}
+        <a href="{{ url_for('usuarios.logout') }}" class="btn btn-secondary">
           Cerrar Sesión
         </a>
         {% endif %} 
@@ -61,9 +69,9 @@
 
   <footer>
   <div class="footer-links">
-      <a href="{{ url_for('nosotros') }}">Nosotros</a> |
-      <a href="{{ url_for('contacto') }}">Contáctanos</a> |
-      <a href="{{ url_for('recetas') }}">Recetas</a>
+  <a href="{{ url_for('productos.nosotros') }}">Nosotros</a> |
+  <a href="{{ url_for('productos.contacto') }}">Contáctanos</a> |
+  <a href="{{ url_for('productos.recetas') }}">Recetas</a>
   </div>
   &copy; {{ current_year }} El Reino Fungi. Todos los derechos reservados.
 </footer>

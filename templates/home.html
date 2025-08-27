@@ -2,17 +2,17 @@
 {% extends "base.html" %}
 <!-- Titulo de la pagina -->
 {% block title %}Inicio - El Reino Fungi{% endblock %} {% block content %}
-<h1 class="mt-4">Bienvenido a Tienda de Hongos Medicinales y Comestibles</h1>
+<h1 class="mt-4 fw-bold" style="font-family:'Montserrat', 'Segoe UI', sans-serif; font-size:2.3rem; color:#000; letter-spacing:1px;">Bienvenido a Tienda de Hongos Medicinales y Comestibles</h1>
 <!-- Contenido de la pagina -->
-<h2 class="mt-4 mb-4">Nuestros Productos</h2>
+<h2 class="mt-4 mb-4 fw-bold" style="font-family:'Montserrat', 'Segoe UI', sans-serif; font-size:1.5rem; color:#000; letter-spacing:1px;">Nuestros Productos</h2>
 <div>
   <!-- El botón de "Registrar Nuevo Producto" ahora solo aparece si es admin -->
   {% if current_user.is_admin == 1 %}
-  <a href="{{ url_for('crear_producto') }}" class="btn btn-primary">
+  <a href="{{ url_for('productos.crear_producto') }}" class="btn btn-primary">
     Registrar Nuevo Producto
   </a>
   {% endif %}
-  <a href="{{ url_for('carrito') }}" class="btn btn-warning">Ir al Carrito</a>
+  <a href="{{ url_for('carrito.carrito') }}" class="btn btn-warning">Ir al Carrito</a>
 </div>
 <br />
 <div class="row row-cols-1 row-cols-md-3 g-4">
@@ -25,7 +25,7 @@
         <p class="card-text">{{ producto[2] }}</p>
         <p class="card-text fw-bold text-success">${{ producto[3] }}</p>
         <a
-          href="{{ url_for('producto_details', id=producto[0]) }}"
+          href="{{ url_for('productos.producto_details', id=producto[0]) }}"
           class="btn btn-primary"
         >
           Ver detalle
@@ -34,14 +34,14 @@
         {% if current_user.is_admin == 1 %}
         <!-- Botón de editar solo si es admin -->
         <a
-          href="{{ url_for('editar_producto', id=producto[0]) }}"
+          href="{{ url_for('productos.editar_producto', id=producto[0]) }}"
           class="btn btn-warning"
           >Editar</a
         >
 
         <!-- Botón de eliminar solo si es admin -->
         <form
-          action="{{ url_for('eliminar_producto', id=producto[0]) }}"
+          action="{{ url_for('productos.eliminar_producto', id=producto[0]) }}"
           method="POST"
           style="display: inline"
         >
@@ -58,11 +58,11 @@
 <div>
   <!-- El botón de "Registrar Nuevo Producto" ahora solo aparece si es admin -->
   {% if current_user.is_admin == 1 %}
-  <a href="{{ url_for('crear_producto') }}" class="btn btn-primary">
+  <a href="{{ url_for('productos.crear_producto') }}" class="btn btn-primary">
     Registrar Nuevo Producto
   </a>
   {% endif %}
-  <a href="{{ url_for('carrito') }}" class="btn btn-warning">Ir al Carrito</a>
+  <a href="{{ url_for('carrito.carrito') }}" class="btn btn-warning">Ir al Carrito</a>
 </div>
 
 {% endblock %}

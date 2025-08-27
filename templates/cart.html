@@ -29,7 +29,7 @@
           <td>${{ item[2] }}</td>
           <td>${{ item[4] }}</td>
           <td>
-            <form action="{{ url_for('quitar_del_carrito', id=item[0]) }}" method="post">
+            <form action="{{ url_for('carrito.quitar_del_carrito', id=item[0]) }}" method="post">
               <button type="submit" class="btn btn-sm btn-danger">Eliminar</button>
             </form>
           </td>
@@ -39,15 +39,15 @@
     </table>
   </div>
 
-  <p class="fs-5"><strong>Total: </strong>${{ total_general }}</p>
+  <p class="fs-5 bg-warning text-dark p-2 rounded"><strong>Total: </strong>${{ total_general }}</p>
 
   <!-- Botones de navegación -->
   <div class="d-flex justify-content-between mt-4">
     <!-- Botón para volver al inicio -->
-    <a href="{{ url_for('bienvenida') }}" class="btn btn-secondary">Volver al inicio</a>
+  <a href="{{ url_for('productos.bienvenida') }}" class="btn btn-secondary">Volver al inicio</a>
 
     <!-- Botón para finalizar compra -->
-    <a href="{{ url_for('checkout') }}" class="btn btn-success">Finalizar Compra</a>
+  <a href="{{ url_for('carrito.checkout') }}" class="btn btn-success">Finalizar Compra</a>
   </div>
 </div>
 {% endblock %}
